@@ -1,17 +1,7 @@
 var PixelPainter = (function(h) {
   
-  /*this is for switching colors of swatch squares by generating hex value*/
-  function randomColor(){
-    var hex = "0123456789ABCDEF".split("");
-    var color = "#";
-    for (var i = 0; i < 6; i++ ) {
-      color += hex[Math.round(Math.random() * 15)];
-    }//end for
-    return color;
-  }//end func
-
   /*this variable begins as a random color*/
-  var currentColor = randomColor();
+  var currentColor = colorGenerator.randomColor();
 
   var canvasDiv = document.createElement("div");
   canvasDiv.id = "canvas";
@@ -84,7 +74,7 @@ var PixelPainter = (function(h) {
   /*upon page load, all 90 squars are random colors*/
   var palletes = document.querySelectorAll(".pallete");
   for (var i = 0; i < palletes.length; i++) {
-      palletes[i].style.backgroundColor = randomColor();
+      palletes[i].style.backgroundColor = colorGenerator.randomColor();
     }//end for
 
   /*change the current color to the bgc of the pallete square clicked*/
