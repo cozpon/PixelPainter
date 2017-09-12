@@ -1,17 +1,17 @@
 
 
-/*body document height is 657.6px and width is 929.6px*/
-
-#pixelPainter {
-  position: relative;
-  border: 1px solid magenta;
-  width: 550px;
-  height: 550px;
-  top: 28.8px;
-  left: 164.8px;
-}
+/*body document height is 616px and width is 929.6px*/
 
 #pp-canvas {
+  position: relative;
+  border: 1px solid magenta;
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  
+}
+
+#canvas {
   
   background-color: pink;
   width: 400px;
