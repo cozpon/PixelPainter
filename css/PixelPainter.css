@@ -2,37 +2,56 @@
 
 /*body document height is 657.6px and width is 929.6px*/
 
+#pixelPainter {
+  position: relative;
+  border: 1px solid magenta;
+  width: 550px;
+  height: 550px;
+  top: 28.8px;
+  left: 164.8px;
+}
+
 #pp-canvas {
-  border: 1px solid black;
+  
   background-color: pink;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px; /*each small square is 40x40 px*/
   position: absolute;
-  left: 214.8px;
-  top: 78.8px;
+  top: 50px;
+  right: 0;
 }
 
 #color-swatch {
-  border: 1px solid black;
+  border: 3px solid black;
   background-color: cyan;
   width: 125px;
   height: 300px;
   position: absolute;
-  top: 78.8px;
+  top: 50px;
 }
 
 #eraseBtn {
-  border: 1px dotted blue;
+  
   border-radius: 5px;
   background-color: orange;
-  width: 100px;
- 
-
+  width: 80px;
+  height: 25px;
+  position: absolute;
+  top: 365px;
+  left: 22.5px;
+  font-family: 'Baloo Tammudu', cursive;
+  text-align: center;
 }
 
 #clearBtn {
-  border: 1px dotted blue;
+  
   border-radius: 5px;
   background-color: orange;
-  width: 100px;
+  width: 80px;
+  height: 25px;
+  position: absolute;
+  top: 400px;
+  left: 22.5px;
+  font-family: 'Baloo Tammudu', cursive;
+  text-align: center;
 }
