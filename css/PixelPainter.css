@@ -14,6 +14,8 @@
 
 #canvas { /*created through DOM api and not HTML*/
   background-color: pink;
+  border: 5px solid black; /*mainly to get rid of the border leakage*/
+  border-radius: 5px;
   width: 400px;
   height: 400px; /*each small square is 10% of this element's H&W*/
   position: absolute;
@@ -22,27 +24,33 @@
 }
 
 /*this has 10x10 copies of it and is contained within 'canvas'*/
-#smallSquare {
+.smallSquare {
   border: 1px solid black;
   width: 38px;
   height: 38px; /*to account for a 1px border we -2 from H&W*/
-  
   float: right;
-  
 }
 
 #color-swatch {
-  border: 3px solid black;
+  border: 5px solid black;
+  border-radius: 5px;
   background-color: cyan;
-  width: 125px;
+  width: 120px;
   height: 300px;
   position: absolute;
   top: 50px;
   left: 0;
 }
 
+#pallete {
+  border: 1px solid black;
+  width: 18px;
+  height: 18px;
+  float: left;
+}
+
 #eraseBtn {
-  
+  border: 2px solid black;
   border-radius: 5px;
   background-color: orange;
   width: 80px;
@@ -55,7 +63,7 @@
 }
 
 #clearBtn {
-  
+  border: 2px solid black;
   border-radius: 5px;
   background-color: orange;
   width: 80px;
