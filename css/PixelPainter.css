@@ -12,6 +12,14 @@
   margin: 0 auto;
 }
 
+#currentColorSquare {
+  position: absolute;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+
 #canvas { /*created through DOM api and not HTML*/
   background-color: pink;
   border: 5px solid black; /*mainly to get rid of the border leakage*/
