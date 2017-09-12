@@ -17,6 +17,24 @@ var PixelPainter = (function(h) {
     
   }//end 2x2 for
 
+  var swatchDiv = document.createElement("div");
+  swatchDiv.id = "color-swatch";
+
+  a.appendChild(swatchDiv);
+
+  var eraseBtnDiv = document.createElement("div");
+  eraseBtnDiv.id = "eraseBtn";
+  eraseBtnDiv.innerHTML = "Erase";
+
+  a.appendChild(eraseBtnDiv); 
+
+  var clearBtnDiv = document.createElement("div");
+  clearBtnDiv.id = "clearBtn";
+  clearBtnDiv.innerHTML = "Clear";
+
+  a.appendChild(clearBtnDiv);
+
+
   //we divide the HxW by X amt of squares then create a bunch of smaller squares within the canvas
 
 })();//end IIFE
