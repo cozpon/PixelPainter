@@ -1,6 +1,38 @@
-#test {
+
+
+/*body document height is 657.6px and width is 929.6px*/
+
+#pp-canvas {
   border: 1px solid black;
-  background-color: green;
-  width: 875px;
-  margin: 0 auto;
+  background-color: pink;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  left: 214.8px;
+  top: 78.8px;
+}
+
+#color-swatch {
+  border: 1px solid black;
+  background-color: cyan;
+  width: 125px;
+  height: 300px;
+  position: absolute;
+  top: 78.8px;
+}
+
+#eraseBtn {
+  border: 1px dotted blue;
+  border-radius: 5px;
+  background-color: orange;
+  width: 100px;
+ 
+
+}
+
+#clearBtn {
+  border: 1px dotted blue;
+  border-radius: 5px;
+  background-color: orange;
+  width: 100px;
 }
