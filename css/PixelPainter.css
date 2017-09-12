@@ -12,20 +12,30 @@
   margin: 0 auto;
 }
 
-#currentColorSquare {
+#currentColorDisplay {
   position: absolute;
   top: 0;
+  width: 120px;
+  height: 30px;
+  border: 2px solid brown;
+  font-size: 12px;
+}
+
+#currentColorSquare {
+  position: absolute;
+  right: 4px;
+  top: 4px;
   width: 20px;
   height: 20px;
   border: 1px solid black;
 }
 
-#canvas { /*created through DOM api and not HTML*/
+#canvas { /*this is the main canvas grid containing 10x10 squares*/
   background-color: pink;
-  border: 5px solid black; /*mainly to get rid of the border leakage*/
+  border: 5px solid black;
   border-radius: 5px;
   width: 400px;
-  height: 400px; /*each small square is 10% of this element's H&W*/
+  height: 400px;
   position: absolute;
   top: 50px;
   right: 0;

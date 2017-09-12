@@ -13,17 +13,23 @@ var PixelPainter = (function(h) {
   var canvasDiv = document.createElement("div");
   canvasDiv.style.height = h;
   canvasDiv.style.width = h;
-  canvasDiv.id = "canvas"; /*styled in CSS correctly*/
+  canvasDiv.id = "canvas";
 
   var a = document.getElementById("pp-canvas");
   a.appendChild(canvasDiv);
 
-  /*display a small square showing the current color*/
+  /*display in a DIV the current color*/
+  var currentColorDisplayDiv = document.createElement("div");
   var currentColorDiv = document.createElement("div");
+  currentColorDisplayDiv.id = "currentColorDisplay";
+  currentColorDisplayDiv.innerHTML = "Current Color"
   currentColorDiv.id = "currentColorSquare";
-  a.appendChild(currentColorDiv);
+  currentColorDiv.style.backgroundColor = currentColor;
+  a.appendChild(currentColorDisplayDiv);
+  currentColorDisplayDiv.appendChild(currentColorDiv);
 
   /*use nested for to create a 10x10 grid of smaller squares*/
+  /*THIS NEEDS TO BE ENCAPSULATED and allow for user input!*/
   for (var i = 0; i < 100; i++) {
       var ssDiv = document.createElement("div");
       ssDiv.setAttribute('class', "smallSquare"); 
@@ -47,7 +53,6 @@ var PixelPainter = (function(h) {
   eraseBtnDiv.id = "eraseBtn";
   eraseBtnDiv.innerHTML = "Erase";
   eraseBtnDiv.addEventListener('click', function() {
-    /*make the currentColor to null*/
     currentColorDiv.style.backgroundColor = null;
     currentColor = null;
   });
