@@ -9,7 +9,7 @@ var PixelPainter = (function(h) {
   a.appendChild(canvasDiv);
 
   /*use nested for to create a 10x10 grid of smaller squares*/
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 100; i++) {
     
       var ssDiv = document.createElement("div");
       ssDiv.id = "smallSquare"; 

@@ -14,8 +14,8 @@
 
 #canvas { /*created through DOM api and not HTML*/
   background-color: pink;
-  width: 66.66%;
-  height: 66.66%; /*each small square is 10% of this element's H&W*/
+  width: 400px;
+  height: 400px; /*each small square is 10% of this element's H&W*/
   position: absolute;
   top: 50px;
   right: 0;
@@ -24,9 +24,11 @@
 /*this has 10x10 copies of it and is contained within 'canvas'*/
 #smallSquare {
   border: 1px solid black;
-  position: relative;
-  width: 9.5%;
-  height: 9.5%;
+  width: 38px;
+  height: 38px; /*to account for a 1px border we -2 from H&W*/
+  
+  float: right;
+  
 }
 
 #color-swatch {
