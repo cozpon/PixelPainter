@@ -1,6 +1,5 @@
 var PixelPainter = (function(h) {
   /*this is for switching colors of swatch squares by generating hex value*/
-  var color = "red";
   function generate(){
     var hex = "0123456789ABCDEF".split("");
     var col = "#";
@@ -9,6 +8,7 @@ var PixelPainter = (function(h) {
     }//end for
     return col;
   }//end func
+  var currentColor = generate();
 
   var canvasDiv = document.createElement("div");
   canvasDiv.style.height = h;
@@ -29,7 +29,8 @@ var PixelPainter = (function(h) {
   var squares = document.querySelectorAll(".smallSquare");
   for (var i = 0; i < squares.length; i++) {
     squares[i].addEventListener('click', function(){
-      this.style.backgroundColor = "red";
+      this.style.backgroundColor = currentColor;
+      console.log(currentColor);
     });
   }
   
@@ -65,11 +66,17 @@ var PixelPainter = (function(h) {
 
   var palletes = document.querySelectorAll(".pallete");
   for (var i = 0; i < palletes.length; i++) {
+      palletes[i].style.backgroundColor = generate();
+    }//end for
+    
+  for (var i = 0; i < palletes.length; i++) {
     palletes[i].addEventListener('click', function() {
-      this.style.backgroundColor = generate();
-    }); 
+      currentColor = this.style.backgroundColor;
+      console.log(currentColor);
+    });
   }//end for
+
   
     
 
-})();//end IIFE
+})();
