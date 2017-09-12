@@ -1,4 +1,5 @@
 var PixelPainter = (function(h) {
+  
   /*this is for switching colors of swatch squares by generating hex value*/
   function randomColor(){
     var hex = "0123456789ABCDEF".split("");
@@ -8,13 +9,12 @@ var PixelPainter = (function(h) {
     }//end for
     return color;
   }//end func
+
+  /*this variable begins as a random color*/
   var currentColor = randomColor();
 
   var canvasDiv = document.createElement("div");
-  canvasDiv.style.height = h;
-  canvasDiv.style.width = h;
   canvasDiv.id = "canvas";
-
   var a = document.getElementById("pp-canvas");
   a.appendChild(canvasDiv);
 
