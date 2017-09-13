@@ -19,14 +19,14 @@ var colorGenerator = (function() {
   }
 
   function convertToRGB(num) {
-    
+
   }
 
-  return colorGenerator = {
+  return {
     randomColor: randomColor,
     randomHex: randomHex,
     convertToRGB: convertToRGB
-  }
+};
 
 })();
 
