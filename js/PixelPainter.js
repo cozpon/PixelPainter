@@ -23,11 +23,12 @@ var PixelPainter = (function(h) {
   /*THIS NEEDS TO BE ENCAPSULATED and allow for user input!*/
   for (var i = 0; i < 100; i++) {
       var ssDiv = document.createElement("div");
-      ssDiv.setAttribute('class', "smallSquare"); 
+      ssDiv.setAttribute('class', "smallSquare");
       canvasDiv.appendChild(ssDiv);   
   }
 
   /*change the bgc of a canvas square when clicked to currentColor*/
+  /*drag functionality is here through multiple eventHandlers*/
   var squares = document.querySelectorAll(".smallSquare");
   var activeDraw = false;
   for (var i = 0; i < squares.length; i++) {
@@ -68,11 +69,8 @@ var PixelPainter = (function(h) {
   clearBtnDiv.id = "clearBtn";
   clearBtnDiv.innerHTML = "Clear";
   clearBtnDiv.addEventListener("click", function() {
-    /*we want to erase all the canvas squares back to original bgc*/
-    /*is a for loop unnecessary?*/
-    for (var i = 0; i < squares.length; i++) {
-      squares[i].style.backgroundColor = null; 
-    }
+    console.log("clear!");
+    
   });
 
   a.appendChild(eraseBtnDiv); 
@@ -97,10 +95,5 @@ var PixelPainter = (function(h) {
           currentColorDiv.style.backgroundColor = currentColor;
       });
     }//end for
-
-  /*change the currentColor to the bgc of the pallete square clicked*/
-  
-
-
 
 })();
