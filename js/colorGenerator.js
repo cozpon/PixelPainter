@@ -9,13 +9,8 @@ var colorGenerator = (function() {
     return color;
   }
 
-  function foo(){
-    console.log("foo");
-  }
-
   return colorGenerator = {
     randomColor: randomColor,
-    foo: foo
   }
 
 })();

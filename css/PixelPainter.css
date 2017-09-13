@@ -19,7 +19,10 @@
   height: 30px;
   border: 5px solid brown;
   border-radius: 5px;
-  font-size: 12px;
+  background-color: null;
+  font-size: 25px;
+  font-family: 'Baloo Tammudu', cursive;
+  text-align: left;
 }
 
 #currentColorSquare {

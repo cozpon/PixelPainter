@@ -1,18 +1,19 @@
 var PixelPainter = (function(h) {
   
-  /*this variable begins as a random color*/
   var currentColor = colorGenerator.randomColor();
+
+  /*create and append the canvas/swatch/btns to the parent pp-canvas DIV*/
+  var a = document.getElementById("pp-canvas");
 
   var canvasDiv = document.createElement("div");
   canvasDiv.id = "canvas";
-  var a = document.getElementById("pp-canvas");
   a.appendChild(canvasDiv);
 
-  /*display in a DIV the current color*/
+  /*display the current color in a DIV at the top*/
   var currentColorDisplayDiv = document.createElement("div");
   var currentColorDiv = document.createElement("div");
   currentColorDisplayDiv.id = "currentColorDisplay";
-  currentColorDisplayDiv.innerHTML = "Current Color"
+  currentColorDisplayDiv.innerHTML = "Color"
   currentColorDiv.id = "currentColorSquare";
   currentColorDiv.style.backgroundColor = currentColor;
   a.appendChild(currentColorDisplayDiv);
@@ -28,17 +29,33 @@ var PixelPainter = (function(h) {
 
   /*change the bgc of a canvas square when clicked to currentColor*/
   var squares = document.querySelectorAll(".smallSquare");
+  var activeDraw = false;
   for (var i = 0; i < squares.length; i++) {
-    squares[i].addEventListener('click', function(){
+
+    squares[i].addEventListener('mousedown', function() {
+      activeDraw = true;
+    });
+
+    squares[i].addEventListener('mousemove', function(){
+      if(activeDraw) {
+        this.style.backgroundColor = currentColor;
+      }
+    });
+
+    squares[i].addEventListener('mouseup', function(){
+      activeDraw = false;
+    });
+
+    squares[i].addEventListener('click', function() {
       this.style.backgroundColor = currentColor;
     });
   }
   
   var swatchDiv = document.createElement("div");
   swatchDiv.id = "color-swatch";
-
   a.appendChild(swatchDiv);
 
+  /*creating both erase and clear buttons*/
   var eraseBtnDiv = document.createElement("div");
   eraseBtnDiv.id = "eraseBtn";
   eraseBtnDiv.innerHTML = "Erase";
@@ -47,22 +64,21 @@ var PixelPainter = (function(h) {
     currentColor = null;
   });
 
-  a.appendChild(eraseBtnDiv); 
-
   var clearBtnDiv = document.createElement("div");
   clearBtnDiv.id = "clearBtn";
   clearBtnDiv.innerHTML = "Clear";
   clearBtnDiv.addEventListener("click", function() {
     /*we want to erase all the canvas squares back to original bgc*/
+    /*is a for loop unnecessary?*/
     for (var i = 0; i < squares.length; i++) {
       squares[i].style.backgroundColor = null; 
     }
   });
 
+  a.appendChild(eraseBtnDiv); 
   a.appendChild(clearBtnDiv);
 
-  /*add small squares to the color swatch*/
-  /*we need each to be a different color..for loop?*/
+  /*create and append pallete squares to the color swatch*/
   var b = document.getElementById("color-swatch");
 
   for (var i = 0; i < 90; i++) {
@@ -71,21 +87,20 @@ var PixelPainter = (function(h) {
       b.appendChild(palleteDiv);
     }//end for
 
-  /*upon page load, all 90 squars are random colors*/
+  /*upon page load, all 90 pallete squares start as random colors*/
+  /*eventHandler will change currentColor to the bgc of the pallete clicked*/
   var palletes = document.querySelectorAll(".pallete");
   for (var i = 0; i < palletes.length; i++) {
-      palletes[i].style.backgroundColor = colorGenerator.randomColor();
+        palletes[i].style.backgroundColor = colorGenerator.randomColor();
+        palletes[i].addEventListener('click', function() {
+          currentColor = event.currentTarget.style.backgroundColor;
+          currentColorDiv.style.backgroundColor = currentColor;
+      });
     }//end for
 
-  /*change the current color to the bgc of the pallete square clicked*/
-  for (var i = 0; i < palletes.length; i++) {
-    palletes[i].addEventListener('click', function() {
-      currentColor = event.currentTarget.style.backgroundColor;
-      currentColorDiv.style.backgroundColor = currentColor;
-    });
-  }//end for
-
+  /*change the currentColor to the bgc of the pallete square clicked*/
   
-    
+
+
 
 })();
