@@ -50,7 +50,12 @@ var PixelPainter = (function(h) {
     squares[i].addEventListener('click', function() {
       this.style.backgroundColor = currentColor;
     });
-  }
+  }//end for
+
+  document.getElementById("canvas").addEventListener("mouseleave", function(event) {
+      console.log("outside");
+      activeDraw = false;
+  });
   
   var swatchDiv = document.createElement("div");
   swatchDiv.id = "color-swatch";
@@ -69,8 +74,11 @@ var PixelPainter = (function(h) {
   clearBtnDiv.id = "clearBtn";
   clearBtnDiv.innerHTML = "Clear";
   clearBtnDiv.addEventListener("click", function() {
-    console.log("clear!");
-    
+    for (var i = 0; i < squares.length; i++) {
+      if (squares[i].style.backgroundColor !== 'pink') {
+        squares[i].style.backgroundColor = 'pink';
+      }
+    }
   });
 
   a.appendChild(eraseBtnDiv); 
@@ -89,7 +97,15 @@ var PixelPainter = (function(h) {
   /*eventHandler will change currentColor to the bgc of the pallete clicked*/
   var palletes = document.querySelectorAll(".pallete");
   for (var i = 0; i < palletes.length; i++) {
-        palletes[i].style.backgroundColor = colorGenerator.randomColor();
+        var hexValue = colorGenerator.randomHex();
+        var lightest = 0;
+        var darkest = hexValue;
+
+
+        palletes[i].style.backgroundColor = "#" + hexValue;
+        /*trying to work on a way to sort these colors into a gradient*/
+
+
         palletes[i].addEventListener('click', function() {
           currentColor = event.currentTarget.style.backgroundColor;
           currentColorDiv.style.backgroundColor = currentColor;

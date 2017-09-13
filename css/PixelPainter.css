@@ -1,15 +1,10 @@
-
-
-/*body document height is 616px and width is 929.6px*/
-
-/*main parent that contains swatch and canvas*/
-/*this element should be 50% wider and taller than 'canvas'*/
 #pp-canvas {
   position: relative;
   border: 1px solid magenta;
   width: 600px;
   height: 600px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 #currentColorDisplay {
@@ -44,6 +39,7 @@
   position: absolute;
   top: 50px;
   right: 0;
+  cursor: pointer;
 }
 
 /*this has 10x10 copies of it and is contained within 'canvas'*/
@@ -65,6 +61,7 @@
   position: absolute;
   top: 50px;
   left: 0;
+  cursor: crosshair;
 }
 
 .pallete {
@@ -85,6 +82,7 @@
   left: 22.5px;
   font-family: 'Baloo Tammudu', cursive;
   text-align: center;
+  cursor: pointer;
 }
 
 #clearBtn {
@@ -98,4 +96,5 @@
   left: 22.5px;
   font-family: 'Baloo Tammudu', cursive;
   text-align: center;
+  cursor: pointer;
 }
