@@ -1,18 +1,19 @@
 var PixelPainter = (function(h) {
+  var currentColor = colorGenerator.randomColor();
+  var activeDraw = false;
+  var savedPictures = [];
+
   var mainDiv = document.getElementById("pp-canvas");
   var canvasDiv = document.createElement("div");
   var swatchDiv = document.createElement("div");
-
   var currentColorDisplayDiv = document.createElement("div");
   var currentColorDiv = document.createElement("div");
-
-  var currentColor = colorGenerator.randomColor();
-
   var eraseBtnDiv = document.createElement("div");
-
   var clearBtnDiv = document.createElement("div");
+  var saveBtnDiv = document.createElement("div");
+  var loadBtnDiv = document.createElement("div");
 
-  var fillBtnDiv = document.createElement("div");
+
 
   // creates main canvas area
   canvasDiv.id = "canvas";
@@ -31,8 +32,8 @@ var PixelPainter = (function(h) {
   mainDiv.appendChild(currentColorDisplayDiv); // adds to HTML
   currentColorDisplayDiv.appendChild(currentColorDiv); // adds to HTML inside color box
 
-  /*use nested for to create a 10x10 grid of smaller squares*/
-  /*THIS NEEDS TO BE ENCAPSULATED and allow for user input!*/
+
+
   for (var i = 0; i < 400; i++) {
       var ssDiv = document.createElement("div" + [i]);
       ssDiv.setAttribute('class', "smallSquare");
@@ -42,7 +43,6 @@ var PixelPainter = (function(h) {
   /*change the bgc of a canvas square when clicked to currentColor*/
   /*drag functionality is here through multiple eventHandlers*/
   var squares = document.querySelectorAll(".smallSquare");
-  var activeDraw = false;
   for (var i = 0; i < squares.length; i++) {
 
     squares[i].addEventListener('mousedown', function() {
@@ -65,20 +65,29 @@ var PixelPainter = (function(h) {
   }//end for
 
 
-  // Fixed bug if cursor moves out of canvas, mousemove is deactivated
   document.getElementById("canvas").addEventListener("mouseleave", function(event) {
-      console.log("outside");
       activeDraw = false;
   });
 
-
-  fillBtnDiv.id = "fillBtn";
-  fillBtnDiv.innerHTML = "Fill";
-  fillBtnDiv.addEventListener('click', function() {
-
+  saveBtnDiv.id = "saveBtn";
+  saveBtnDiv.innerHTML = "Save";
+  saveBtnDiv.addEventListener('click', function(){
+    savedDrawing = [];
+    for (var i = 0; i < squares.length; i++){
+      savedDrawing.push(squares[i].style.backgroundColor);
+    }
+    console.log("SAVE");
   });
 
-  /*creating both erase and clear buttons*/
+
+  loadBtnDiv.id = "loadBtn";
+  loadBtnDiv.innerHTML = "Load";
+  loadBtnDiv.addEventListener('click', function(){
+    for (var i = 0; i < squares.length; i++){
+      squares[i].style.backgroundColor = savedDrawing[i];
+    }
+    console.log("load!");
+  });
 
   eraseBtnDiv.id = "eraseBtn";
   eraseBtnDiv.innerHTML = "Erase";
@@ -93,46 +102,41 @@ var PixelPainter = (function(h) {
   clearBtnDiv.innerHTML = "Clear";
   clearBtnDiv.addEventListener("click", function() {
     for (var i = 0; i < squares.length; i++) {
-      if (squares[i].style.backgroundColor !== 'white') {
-        squares[i].style.backgroundColor = 'white';
+      if (squares[i].style.backgroundColor !== null) {
+        squares[i].style.backgroundColor = null;
       }
     }
   });
 
   mainDiv.appendChild(eraseBtnDiv);
   mainDiv.appendChild(clearBtnDiv);
-  mainDiv.appendChild(fillBtnDiv);
+  mainDiv.appendChild(loadBtnDiv);
+  mainDiv.appendChild(saveBtnDiv);
+
 
   /*create and append pallete squares to the color swatch*/
-  var b = document.getElementById("color-swatch");
+  var colorSwatch = document.getElementById("color-swatch");
 
   for (var i = 0; i < 90; i++) {
       var palleteDiv = document.createElement("div");
       palleteDiv.setAttribute('class', "pallete");
-      b.appendChild(palleteDiv);
+      colorSwatch.appendChild(palleteDiv);
     }//end for
 
-  /*upon page load, all 90 pallete squares start as random colors*/
-  /*eventHandler will change currentColor to the bgc of the pallete clicked*/
+
   var palletes = document.querySelectorAll(".pallete");
   for (var i = 0; i < palletes.length; i++) {
         var hexValue = colorGenerator.randomHex();
         var lightest = 0;
         var darkest = hexValue;
 
-
         palletes[i].style.backgroundColor = "#" + hexValue;
-        /*trying to work on a way to sort these colors into a gradient*/
-
-
         palletes[i].addEventListener('click', function(event) {
           currentColor = event.currentTarget.style.backgroundColor;
           currentColorDiv.style.backgroundColor = currentColor;
           currentColorDisplayDiv.style.borderColor = currentColor;
-          console.log(currentColor);
-
 
       });
-    }//end for
+    }
 
 })();
